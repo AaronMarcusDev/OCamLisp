@@ -1,2 +1,2 @@
 # OCamLisp
- A lisp-inspired language that compiles to OCaml code.
+A lisp-inspired language that compiles to OCaml code.
