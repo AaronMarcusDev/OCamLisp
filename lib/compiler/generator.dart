@@ -15,6 +15,7 @@ class Generator {
   void _init() {
     // Add libraries
     _addLib(libLoader.load("std"));
+    code.add("(*user - program*)");
   }
 
   List<String> generate(List<Token> AST) {
@@ -24,12 +25,14 @@ class Generator {
       exit(1);
     }
 
+    generateObj(x) => generate(x);
+
     // Load libraries
     _init();
 
     isObject(token) => token.type == TokenType.OBJECT;
     // ignore: non_constant_identifier_names
-    ObjectSolver(token) => generate([token])[0];
+    ObjectSolver(token) => generateObj([token])[0];
 
     for (int c = 0; c < AST.length; c++) {
       Token token = AST[c];
@@ -48,12 +51,12 @@ class Generator {
           }
           if (isObject(args[0])) {
             try {
-              code.add("print_endline \"${ObjectSolver(args[0])}\";;");
+              code.add("puts_int (${ObjectSolver(args[0])});;");
             } catch (e) {
               print("GENERATOR FAILED `PUTS` IN LINE: $line.");
             }
           } else {
-            code.add("print_endline \"${args[0].value}\";;");
+            code.add("puts_int ${args[0].value};;");
           }
         }
       } else {

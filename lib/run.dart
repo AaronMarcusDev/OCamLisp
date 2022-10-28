@@ -19,6 +19,5 @@ String _loadFile(String file) {
 void run(String file) {
   List<String> code =
       generator.generate(parser.parse(lexer.lexProgram(_loadFile(file))));
-      print(code);
   File("./main.ml").writeAsStringSync(code.join("\n"));
 }
