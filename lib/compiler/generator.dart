@@ -1,4 +1,5 @@
 import 'package:ocamlisp/shared/common__share.dart';
+import 'package:ocamlisp/compiler/load_lib.dart';
 
 class Generator {
   List<String> generate(List<Token> AST) {
@@ -18,14 +19,13 @@ class Generator {
       int line = AST[c].line;
       TokenType type = AST[c].type;
       dynamic value = AST[c].value;
-      // print("$token $type $value");
 
       if (type == TokenType.OBJECT) {
         dynamic command = value[0].value;
         List<Token> args = value;
         args.removeAt(0);
 
-        if (command == 'puts') {
+        if (command == 'puts_int') {
           if (args.length > 1) {
             error(token.line, "Too many arguments for `puts`.");
           }
