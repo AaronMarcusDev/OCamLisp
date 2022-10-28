@@ -1,14 +1,30 @@
 import 'package:ocamlisp/shared/common__share.dart';
 import 'package:ocamlisp/compiler/load_lib.dart';
 
-class Generator {
-  List<String> generate(List<Token> AST) {
-    List<String> code = [];
+LibLoader libLoader = LibLoader();
 
+class Generator {
+  List<String> code = [];
+
+  void _addLib(String lib) {
+    for (String line in lib.split("\n")) {
+      code.add(line);
+    }
+  }
+
+  void _init() {
+    // Add libraries
+    _addLib(libLoader.load("std"));
+  }
+
+  List<String> generate(List<Token> AST) {
+    // Nested generator functions
     void error(int line, String msg) {
       print("ERROR, line $line: $msg");
       exit(1);
     }
+
+    _init();
 
     isObject(token) => token.type == TokenType.OBJECT;
     // ignore: non_constant_identifier_names
