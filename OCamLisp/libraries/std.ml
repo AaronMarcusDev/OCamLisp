@@ -3,10 +3,10 @@
 let newline = fun () -> 
   print_endline "";;
 
-let puts_int = fun x -> 
-  print_int x;
+let puts_int = fun v -> 
+  print_int v;
   newline ();;
 
-let puts_float = fun x ->
-  print_float x;
+let puts_float = fun v ->
+  print_float v;
   newline ();;

@@ -6,3 +6,4 @@
 build/
 bin/input.ocl
 bin/main.ml
+bin/main.exe

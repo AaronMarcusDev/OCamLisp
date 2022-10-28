@@ -24,6 +24,7 @@ class Generator {
       exit(1);
     }
 
+    // Load libraries
     _init();
 
     isObject(token) => token.type == TokenType.OBJECT;
