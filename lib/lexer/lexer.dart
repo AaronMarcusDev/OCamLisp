@@ -1,4 +1,4 @@
-import 'package:ocamlisp/share.dart';
+import 'package:ocamlisp/shared/common__share.dart';
 
 class Lexer {
   List<Token> _lex(int line, String program) {

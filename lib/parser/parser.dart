@@ -1,5 +1,4 @@
-import 'package:ocamlisp/share.dart';
-import 'package:ocamlisp/code.dart';
+import 'package:ocamlisp/shared/common__share.dart';
 
 class Parser {
   List<Token> parse(List<Token> tokens) {

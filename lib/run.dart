@@ -1,7 +1,7 @@
-import 'package:ocamlisp/lexer.dart';
-import 'package:ocamlisp/parser.dart';
-import 'package:ocamlisp/generator.dart';
-import 'package:ocamlisp/share.dart';
+import 'package:ocamlisp/lexer/lexer.dart';
+import 'package:ocamlisp/parser/parser.dart';
+import 'package:ocamlisp/compiler/generator.dart';
+import 'package:ocamlisp/shared/common__share.dart';
 
 Lexer lexer = Lexer();
 Parser parser = Parser();
@@ -19,5 +19,6 @@ String _loadFile(String file) {
 void run(String file) {
   List<String> code =
       generator.generate(parser.parse(lexer.lexProgram(_loadFile(file))));
+      print(code);
   File("./main.ml").writeAsStringSync(code.join("\n"));
 }

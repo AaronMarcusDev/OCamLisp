@@ -1,4 +1,4 @@
-import 'package:ocamlisp/token.dart';
+import 'package:ocamlisp/Types/token.dart';
 
 class Code { 
   String code;
